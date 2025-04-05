@@ -16,39 +16,50 @@ class Home extends StatelessWidget {
         ),
         centerTitle: false,
       ),
-      body: Container(
+      body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              color: Colors.blueGrey[500],
-              margin: const EdgeInsets.all(20),
-              padding: const EdgeInsets.all(20),
-              child: const Text("Result"),
-            ),
-            Container(
-              color: Colors.grey[900],
-              margin: const EdgeInsets.all(20),
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Container(
+        child: Material(
+          elevation: 10,
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.grey[900],
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.only(bottom: 20),
+                  decoration: BoxDecoration(
                     color: Colors.blueGrey[700],
-                    margin: const EdgeInsets.all(20),
-                    padding: const EdgeInsets.all(20),
-                    child: const Text("Numbers"),
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  Container(
-                    color: Colors.blueGrey[900],
-                    margin: const EdgeInsets.all(20),
-                    padding: const EdgeInsets.all(20),
-                    child: const Text("Operations"),
+                  child: const Text(
+                    'Result',
+                    style: TextStyle(fontSize: 28, color: Colors.white),
+                    textAlign: TextAlign.right,
                   ),
-                ],
-              ),
+                ),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey[700],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: const [
+                        Expanded(child: Placeholder(color: Colors.amber)),
+                        SizedBox(width: 20),
+                        Expanded(child: Placeholder(color: Colors.amber)),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
