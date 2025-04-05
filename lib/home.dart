@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_calculator/widgets/text_button_group.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -58,13 +59,41 @@ class Home extends StatelessWidget {
                               color: Colors.blueGrey[500],
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: const Text(
-                              'Numbers',
-                              style: TextStyle(
-                                fontSize: 28,
-                                color: Colors.white,
-                              ),
-                              textAlign: TextAlign.right,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Expanded(
+                                  child: TextButtonGroup(
+                                    onPressed: (value) {
+                                      print("Pressed $value");
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                Expanded(
+                                  child: TextButtonGroup(
+                                    onPressed: (value) {
+                                      print("Pressed $value");
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                Expanded(
+                                  child: TextButtonGroup(
+                                    onPressed: (value) {
+                                      print("Pressed $value");
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                Expanded(
+                                  child: TextButtonGroup(
+                                    onPressed: (value) {
+                                      print("Pressed $value");
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
