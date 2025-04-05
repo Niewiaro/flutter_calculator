@@ -49,10 +49,44 @@ class Home extends StatelessWidget {
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: const [
-                        Expanded(child: Placeholder(color: Colors.amber)),
-                        SizedBox(width: 20),
-                        Expanded(child: Placeholder(color: Colors.amber)),
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: Colors.blueGrey[500],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Text(
+                              'Numbers',
+                              style: TextStyle(
+                                fontSize: 28,
+                                color: Colors.white,
+                              ),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: Colors.blueGrey[600],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Text(
+                              'Operations',
+                              style: TextStyle(
+                                fontSize: 28,
+                                color: Colors.white,
+                              ),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
