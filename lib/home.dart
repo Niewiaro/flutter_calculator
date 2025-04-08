@@ -6,6 +6,9 @@ import 'package:flutter_calculator/widgets/styled_outlined_button.dart';
 import 'package:flutter_calculator/widgets/styled_text_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:flutter_calculator/models/history_entry.dart';
+import 'package:flutter_calculator/screens/history_screen.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -18,6 +21,8 @@ class _HomeState extends State<Home> {
   double? previousValue;
   String? operator;
   bool shouldClearInput = false;
+
+  List<HistoryEntry> history = [];
 
   void appendInput(String value) {
     setState(() {
@@ -76,8 +81,20 @@ class _HomeState extends State<Home> {
         return;
     }
 
+    final expression =
+        '${previousValue!.toStringAsFixed(0)} $operator ${current.toStringAsFixed(0)}';
+    final resultStr = result.toStringAsFixed(0);
+
     setState(() {
-      input = result.toStringAsFixed(0);
+      history.add(
+        HistoryEntry(
+          expression: expression,
+          result: resultStr,
+          dateTime: DateTime.now(),
+        ),
+      );
+
+      input = resultStr;
       previousValue = null;
       operator = null;
       shouldClearInput = true;
@@ -104,10 +121,14 @@ class _HomeState extends State<Home> {
             StyledOutlinedButton(onPressed: clearAll, child: const Text('C')),
             const SizedBox(width: 10),
             StyledOutlinedButton(
-              onPressed: () {
-                print("Pressed H");
-              },
               child: const Text('H'),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => HistoryScreen(history: history),
+                  ),
+                );
+              },
             ),
           ],
         ),
