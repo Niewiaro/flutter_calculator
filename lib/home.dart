@@ -4,6 +4,7 @@ import 'package:flutter_calculator/widgets/full_expand_wrapper.dart';
 import 'package:flutter_calculator/widgets/styled_elevated_button.dart';
 import 'package:flutter_calculator/widgets/styled_outlined_button.dart';
 import 'package:flutter_calculator/widgets/styled_text_button.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -290,11 +291,47 @@ class Home extends StatelessWidget {
                               color: Colors.blueGrey[600],
                               borderRadius: BORDER_RADIUS,
                             ),
-                            child: const Placeholder(
-                              color: Colors.red,
-                              strokeWidth: 2,
-                              fallbackHeight: double.infinity,
-                              fallbackWidth: double.infinity,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Expanded(
+                                  child: IconButton(
+                                    onPressed: () => print("Pressed +"),
+                                    icon: const FaIcon(FontAwesomeIcons.plus),
+                                    color: Colors.white,
+                                    iconSize: ICON_FONT_SIZE,
+                                  ),
+                                ),
+                                const SizedBox(height: PADDING),
+                                Expanded(
+                                  child: IconButton(
+                                    onPressed: () => print("Pressed -"),
+                                    // icon: const FaIcon(FontAwesomeIcons.minus),
+                                    icon: const Icon(Icons.remove),
+                                    color: Colors.white,
+                                    iconSize: ICON_FONT_SIZE,
+                                  ),
+                                ),
+                                const SizedBox(height: PADDING),
+                                Expanded(
+                                  child: IconButton(
+                                    onPressed: () => print("Pressed *"),
+                                    // icon: const FaIcon(FontAwesomeIcons.xmark),
+                                    icon: const Icon(Icons.clear),
+                                    color: Colors.white,
+                                    iconSize: ICON_FONT_SIZE,
+                                  ),
+                                ),
+                                const SizedBox(height: PADDING),
+                                Expanded(
+                                  child: IconButton(
+                                    onPressed: () => print("Pressed ="),
+                                    icon: const FaIcon(FontAwesomeIcons.equals),
+                                    color: Colors.white,
+                                    iconSize: ICON_FONT_SIZE,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
