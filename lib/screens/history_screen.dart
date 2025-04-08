@@ -10,18 +10,54 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("History")),
+      backgroundColor: Colors.grey[900],
+      appBar: AppBar(
+        title: const Text("History"),
+        backgroundColor: Colors.blueGrey[800],
+      ),
       body: history.isEmpty
-          ? const Center(child: Text("No history"))
+          ? const Center(
+              child: Text(
+                "No calculations yet",
+                style: TextStyle(color: Colors.white70, fontSize: 18),
+              ),
+            )
           : ListView.builder(
+              padding: const EdgeInsets.all(16),
               itemCount: history.length,
               itemBuilder: (context, index) {
-                final entry = history[index];
-                final formattedDate = DateFormat('yyyy-MM-dd HH:mm').format(entry.dateTime);
-                return ListTile(
-                  title: Text(entry.expression),
-                  subtitle: Text('= ${entry.result}'),
-                  trailing: Text(formattedDate),
+                final entry = history[history.length - 1 - index]; // newest first
+                final formattedDate =
+                    DateFormat('yyyy-MM-dd HH:mm').format(entry.dateTime);
+
+                return Card(
+                  color: Colors.blueGrey[700],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  margin: const EdgeInsets.only(bottom: 12),
+                  child: ListTile(
+                    title: Text(
+                      entry.expression,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'Result: ${entry.result}',
+                      style: const TextStyle(
+                        color: Colors.white70,
+                      ),
+                    ),
+                    trailing: Text(
+                      formattedDate,
+                      style: const TextStyle(
+                        color: Colors.white60,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
                 );
               },
             ),
