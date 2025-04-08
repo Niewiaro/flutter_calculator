@@ -189,13 +189,66 @@ class Home extends StatelessWidget {
                                 ),
 
                                 const SizedBox(height: PADDING),
-                                const Expanded(
-                                  child: Placeholder(color: Colors.white),
+
+                                // third element: 7, 8, 9 (StyledOutlinedButton)
+                                Expanded(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(PADDING),
+                                    decoration: BoxDecoration(
+                                      color: Colors.indigoAccent[100],
+                                      borderRadius: BORDER_RADIUS,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        FullExpandWrapper(
+                                          child: StyledOutlinedButton(
+                                            child: const Text(
+                                              "7",
+                                              style: TextStyle(
+                                                fontSize: BUTTON_FONT_SIZE,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              print("Pressed 7");
+                                            },
+                                          ),
+                                        ),
+                                        const SizedBox(width: PADDING),
+                                        FullExpandWrapper(
+                                          child: StyledOutlinedButton(
+                                            child: const Text(
+                                              "8",
+                                              style: TextStyle(
+                                                fontSize: BUTTON_FONT_SIZE,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              print("Pressed 8");
+                                            },
+                                          ),
+                                        ),
+                                        const SizedBox(width: PADDING),
+                                        FullExpandWrapper(
+                                          child: StyledOutlinedButton(
+                                            child: const Text(
+                                              "9",
+                                              style: TextStyle(
+                                                fontSize: BUTTON_FONT_SIZE,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              print("Pressed 9");
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
 
                                 const SizedBox(height: PADDING),
 
-                                // third element: 0 (StyledElevatedButton)
+                                // forth element: 0 (StyledElevatedButton)
                                 Expanded(
                                   child: Container(
                                     padding: const EdgeInsets.all(PADDING),
