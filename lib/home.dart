@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator/constants.dart';
 import 'package:flutter_calculator/widgets/full_expand_wrapper.dart';
+import 'package:flutter_calculator/widgets/styled_elevated_button.dart';
 import 'package:flutter_calculator/widgets/styled_outlined_button.dart';
 import 'package:flutter_calculator/widgets/styled_text_button.dart';
 
@@ -73,7 +74,7 @@ class Home extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                // first element: 1, 2, 3
+                                // first element: 1, 2, 3 (StyledTextButton)
                                 Expanded(
                                   child: Container(
                                     padding: const EdgeInsets.all(PADDING),
@@ -131,16 +132,95 @@ class Home extends StatelessWidget {
 
                                 const SizedBox(height: PADDING),
 
-                                const Expanded(
-                                  child: Placeholder(color: Colors.white),
+                                // second element: 4, 5, 6 (StyledElevatedButton)
+                                Expanded(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(PADDING),
+                                    decoration: BoxDecoration(
+                                      color: Colors.teal[100],
+                                      borderRadius: BORDER_RADIUS,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        FullExpandWrapper(
+                                          child: StyledElevatedButton(
+                                            child: const Text(
+                                              "4",
+                                              style: TextStyle(
+                                                fontSize: BUTTON_FONT_SIZE,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              print("Pressed 4");
+                                            },
+                                          ),
+                                        ),
+                                        const SizedBox(width: PADDING),
+                                        FullExpandWrapper(
+                                          child: StyledElevatedButton(
+                                            child: const Text(
+                                              "5",
+                                              style: TextStyle(
+                                                fontSize: BUTTON_FONT_SIZE,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              print("Pressed 5");
+                                            },
+                                          ),
+                                        ),
+                                        const SizedBox(width: PADDING),
+                                        FullExpandWrapper(
+                                          child: StyledElevatedButton(
+                                            child: const Text(
+                                              "6",
+                                              style: TextStyle(
+                                                fontSize: BUTTON_FONT_SIZE,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              print("Pressed 6");
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
+
                                 const SizedBox(height: PADDING),
                                 const Expanded(
                                   child: Placeholder(color: Colors.white),
                                 ),
+
                                 const SizedBox(height: PADDING),
-                                const Expanded(
-                                  child: Placeholder(color: Colors.white),
+
+                                // third element: 0 (StyledElevatedButton)
+                                Expanded(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(PADDING),
+                                    decoration: BoxDecoration(
+                                      color: Colors.teal[100],
+                                      borderRadius: BORDER_RADIUS,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        FullExpandWrapper(
+                                          child: StyledElevatedButton(
+                                            child: const Text(
+                                              "0",
+                                              style: TextStyle(
+                                                fontSize: BUTTON_FONT_SIZE,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              print("Pressed 0");
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
