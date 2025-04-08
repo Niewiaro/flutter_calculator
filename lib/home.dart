@@ -31,31 +31,30 @@ class _HomeState extends State<Home> {
   }
 
   void selectOperator(String selectedOperator) {
-  setState(() {
-    double current = double.tryParse(input) ?? 0;
+    setState(() {
+      double current = double.tryParse(input) ?? 0;
 
-    if (previousValue != null && operator != null) {
-      switch (operator) {
-        case '+':
-          previousValue = previousValue! + current;
-          break;
-        case '-':
-          previousValue = previousValue! - current;
-          break;
-        case '*':
-          previousValue = previousValue! * current;
-          break;
+      if (previousValue != null && operator != null) {
+        switch (operator) {
+          case '+':
+            previousValue = previousValue! + current;
+            break;
+          case '-':
+            previousValue = previousValue! - current;
+            break;
+          case '*':
+            previousValue = previousValue! * current;
+            break;
+        }
+      } else {
+        previousValue = current;
       }
-    } else {
-      previousValue = current;
-    }
 
-    input = previousValue!.toStringAsFixed(0);
-    operator = selectedOperator;
-    shouldClearInput = true;
-  });
-}
-
+      input = previousValue!.toStringAsFixed(0);
+      operator = selectedOperator;
+      shouldClearInput = true;
+    });
+  }
 
   void calculateResult() {
     if (input.isEmpty || previousValue == null || operator == null) return;
@@ -85,6 +84,15 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void clearAll() {
+    setState(() {
+      input = '';
+      previousValue = null;
+      operator = null;
+      shouldClearInput = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,12 +100,14 @@ class _HomeState extends State<Home> {
         title: Row(
           children: [
             Text('NuMbErS', style: TextStyle(fontWeight: FontWeight.bold)),
-            Expanded(child: SizedBox()),
+            const Spacer(),
+            StyledOutlinedButton(onPressed: clearAll, child: const Text('C')),
+            const SizedBox(width: 10),
             StyledOutlinedButton(
-              child: const Text('H'),
               onPressed: () {
                 print("Pressed H");
               },
+              child: const Text('H'),
             ),
           ],
         ),
