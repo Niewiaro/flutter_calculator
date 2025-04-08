@@ -6,8 +6,21 @@ import 'package:flutter_calculator/widgets/styled_outlined_button.dart';
 import 'package:flutter_calculator/widgets/styled_text_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  String input = '';
+
+  void appendInput(String value) {
+    setState(() {
+      input += value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +59,12 @@ class Home extends StatelessWidget {
                     color: Colors.blueGrey[700],
                     borderRadius: BORDER_RADIUS,
                   ),
-                  child: const Text(
-                    'Result',
-                    style: TextStyle(fontSize: 28, color: Colors.white),
+                  child: Text(
+                    input.isEmpty ? '0' : input,
+                    style: const TextStyle(
+                      fontSize: BUTTON_FONT_SIZE,
+                      color: Colors.white,
+                    ),
                     textAlign: TextAlign.right,
                   ),
                 ),
@@ -94,7 +110,7 @@ class Home extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              print("Pressed 1");
+                                              appendInput("1");
                                             },
                                           ),
                                         ),
@@ -108,7 +124,7 @@ class Home extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              print("Pressed 2");
+                                              appendInput("2");
                                             },
                                           ),
                                         ),
@@ -122,7 +138,7 @@ class Home extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              print("Pressed 3");
+                                              appendInput("3");
                                             },
                                           ),
                                         ),
@@ -152,7 +168,7 @@ class Home extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              print("Pressed 4");
+                                              appendInput("4");
                                             },
                                           ),
                                         ),
@@ -166,7 +182,7 @@ class Home extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              print("Pressed 5");
+                                              appendInput("5");
                                             },
                                           ),
                                         ),
@@ -180,7 +196,7 @@ class Home extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              print("Pressed 6");
+                                              appendInput("6");
                                             },
                                           ),
                                         ),
@@ -210,7 +226,7 @@ class Home extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              print("Pressed 7");
+                                              appendInput("7");
                                             },
                                           ),
                                         ),
@@ -224,7 +240,7 @@ class Home extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              print("Pressed 8");
+                                              appendInput("8");
                                             },
                                           ),
                                         ),
@@ -238,7 +254,7 @@ class Home extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              print("Pressed 9");
+                                              appendInput("9");
                                             },
                                           ),
                                         ),
@@ -268,7 +284,7 @@ class Home extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              print("Pressed 0");
+                                              appendInput("0");
                                             },
                                           ),
                                         ),
@@ -296,7 +312,9 @@ class Home extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: IconButton(
-                                    onPressed: () => print("Pressed +"),
+                                    onPressed: () {
+                                      appendInput("+");
+                                    },
                                     icon: const FaIcon(FontAwesomeIcons.plus),
                                     color: Colors.white,
                                     iconSize: ICON_FONT_SIZE,
@@ -305,7 +323,9 @@ class Home extends StatelessWidget {
                                 const SizedBox(height: PADDING),
                                 Expanded(
                                   child: IconButton(
-                                    onPressed: () => print("Pressed -"),
+                                    onPressed: () {
+                                      appendInput("-");
+                                    },
                                     // icon: const FaIcon(FontAwesomeIcons.minus),
                                     icon: const Icon(Icons.remove),
                                     color: Colors.white,
@@ -315,7 +335,9 @@ class Home extends StatelessWidget {
                                 const SizedBox(height: PADDING),
                                 Expanded(
                                   child: IconButton(
-                                    onPressed: () => print("Pressed *"),
+                                    onPressed: () {
+                                      appendInput("x");
+                                    },
                                     // icon: const FaIcon(FontAwesomeIcons.xmark),
                                     icon: const Icon(Icons.clear),
                                     color: Colors.white,
@@ -325,7 +347,9 @@ class Home extends StatelessWidget {
                                 const SizedBox(height: PADDING),
                                 Expanded(
                                   child: IconButton(
-                                    onPressed: () => print("Pressed ="),
+                                    onPressed: () {
+                                      appendInput("=");
+                                    },
                                     icon: const FaIcon(FontAwesomeIcons.equals),
                                     color: Colors.white,
                                     iconSize: ICON_FONT_SIZE,
