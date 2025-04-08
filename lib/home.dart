@@ -15,10 +15,73 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String input = '';
+  double? previousValue;
+  String? operator;
+  bool shouldClearInput = false;
 
   void appendInput(String value) {
     setState(() {
-      input += value;
+      if (shouldClearInput) {
+        input = value;
+        shouldClearInput = false;
+      } else {
+        input += value;
+      }
+    });
+  }
+
+  void selectOperator(String selectedOperator) {
+  setState(() {
+    double current = double.tryParse(input) ?? 0;
+
+    if (previousValue != null && operator != null) {
+      switch (operator) {
+        case '+':
+          previousValue = previousValue! + current;
+          break;
+        case '-':
+          previousValue = previousValue! - current;
+          break;
+        case '*':
+          previousValue = previousValue! * current;
+          break;
+      }
+    } else {
+      previousValue = current;
+    }
+
+    input = previousValue!.toStringAsFixed(0);
+    operator = selectedOperator;
+    shouldClearInput = true;
+  });
+}
+
+
+  void calculateResult() {
+    if (input.isEmpty || previousValue == null || operator == null) return;
+
+    double current = double.tryParse(input) ?? 0;
+    double result;
+
+    switch (operator) {
+      case '+':
+        result = previousValue! + current;
+        break;
+      case '-':
+        result = previousValue! - current;
+        break;
+      case '*':
+        result = previousValue! * current;
+        break;
+      default:
+        return;
+    }
+
+    setState(() {
+      input = result.toStringAsFixed(0);
+      previousValue = null;
+      operator = null;
+      shouldClearInput = true;
     });
   }
 
@@ -313,7 +376,7 @@ class _HomeState extends State<Home> {
                                 Expanded(
                                   child: IconButton(
                                     onPressed: () {
-                                      appendInput("+");
+                                      selectOperator("+");
                                     },
                                     icon: const FaIcon(FontAwesomeIcons.plus),
                                     color: Colors.white,
@@ -324,7 +387,7 @@ class _HomeState extends State<Home> {
                                 Expanded(
                                   child: IconButton(
                                     onPressed: () {
-                                      appendInput("-");
+                                      selectOperator("-");
                                     },
                                     // icon: const FaIcon(FontAwesomeIcons.minus),
                                     icon: const Icon(Icons.remove),
@@ -336,7 +399,7 @@ class _HomeState extends State<Home> {
                                 Expanded(
                                   child: IconButton(
                                     onPressed: () {
-                                      appendInput("x");
+                                      selectOperator("*");
                                     },
                                     // icon: const FaIcon(FontAwesomeIcons.xmark),
                                     icon: const Icon(Icons.clear),
@@ -348,7 +411,7 @@ class _HomeState extends State<Home> {
                                 Expanded(
                                   child: IconButton(
                                     onPressed: () {
-                                      appendInput("=");
+                                      calculateResult();
                                     },
                                     icon: const FaIcon(FontAwesomeIcons.equals),
                                     color: Colors.white,
