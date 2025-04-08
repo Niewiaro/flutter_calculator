@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_calculator/constants.dart';
+import 'package:flutter_calculator/widgets/outlined_button_group.dart';
 import 'package:flutter_calculator/widgets/text_button_group.dart';
+import 'package:flutter_calculator/widgets/elevated_button_group.dart';
+
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -18,22 +22,22 @@ class Home extends StatelessWidget {
         centerTitle: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(PADDING),
         child: Material(
           elevation: 10,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BORDER_RADIUS,
           color: Colors.grey[900],
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(PADDING),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(20),
-                  margin: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.all(PADDING),
+                  margin: const EdgeInsets.only(bottom: PADDING),
                   decoration: BoxDecoration(
                     color: Colors.blueGrey[700],
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BORDER_RADIUS,
                   ),
                   child: const Text(
                     'Result',
@@ -43,10 +47,10 @@ class Home extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(PADDING),
                     decoration: BoxDecoration(
                       color: Colors.blueGrey[700],
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BORDER_RADIUS,
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -54,10 +58,10 @@ class Home extends StatelessWidget {
                         Expanded(
                           flex: 3,
                           child: Container(
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(PADDING),
                             decoration: BoxDecoration(
                               color: Colors.blueGrey[500],
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BORDER_RADIUS,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,23 +73,23 @@ class Home extends StatelessWidget {
                                     },
                                   ),
                                 ),
-                                const SizedBox(height: 20),
+                                const SizedBox(height: PADDING),
                                 Expanded(
-                                  child: TextButtonGroup(
+                                  child: ElevatedButtonGroup(
                                     onPressed: (value) {
                                       print("Pressed $value");
                                     },
                                   ),
                                 ),
-                                const SizedBox(height: 20),
+                                const SizedBox(height: PADDING),
                                 Expanded(
-                                  child: TextButtonGroup(
+                                  child: OutlinedButtonGroup(
                                     onPressed: (value) {
                                       print("Pressed $value");
                                     },
                                   ),
                                 ),
-                                const SizedBox(height: 20),
+                                const SizedBox(height: PADDING),
                                 Expanded(
                                   child: TextButtonGroup(
                                     onPressed: (value) {
@@ -97,14 +101,14 @@ class Home extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(width: 20),
+                        const SizedBox(width: PADDING),
                         Expanded(
                           flex: 1,
                           child: Container(
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(PADDING),
                             decoration: BoxDecoration(
                               color: Colors.blueGrey[600],
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BORDER_RADIUS,
                             ),
                             child: const Text(
                               'Operations',
